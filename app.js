@@ -9,65 +9,73 @@ const BRAND = {
 };
 
 const PRODUCTS = [
-  {
-    id: "velvet-rose", name: "Velvet Rose", type: "Eau de Parfum · Women",
-    cat: "Women", notes: "Soft rose · vanilla · warm musk",
-    desc: "A sophisticated floral fragrance with soft rose, vanilla and warm musk notes.",
-    price: 38500, old: 45000, rating: 4.9, reviews: 412, badge: "Bestseller",
-    img: "https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=700&auto=format&fit=crop",
-  },
-  {
-    id: "oud-elan", name: "Oud Élan", type: "Extrait de Parfum · Unisex",
-    cat: "Unisex", notes: "Smoked oud · amber · subtle spices",
-    desc: "A rich and luxurious scent combining oud, amber and subtle spices.",
-    price: 55000, old: null, rating: 5.0, reviews: 268, badge: "New",
-    img: "https://images.unsplash.com/photo-1615634260167-c8cdede054de?q=80&w=700&auto=format&fit=crop",
-  },
-  {
-    id: "vanilla-muse", name: "Vanilla Muse", type: "Eau de Parfum · Women",
-    cat: "Women", notes: "Creamy vanilla · delicate florals",
-    desc: "A smooth, sweet fragrance with creamy vanilla and delicate floral notes.",
-    price: 32000, old: null, rating: 4.8, reviews: 531, badge: null,
-    img: "https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=700&auto=format&fit=crop",
-  },
-  {
-    id: "midnight-bloom", name: "Midnight Bloom", type: "Eau de Parfum · Women",
-    cat: "Women", notes: "Dark florals · musk · warm amber",
-    desc: "An elegant evening fragrance with dark florals, musk and warm amber.",
-    price: 47000, old: 52000, rating: 4.9, reviews: 197, badge: "Sale",
-    img: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=700&auto=format&fit=crop",
-  },
-  {
-    id: "amber-noir", name: "Amber Noir", type: "Perfume Oil · Men",
-    cat: "Men", notes: "Amber · leather · black pepper",
-    desc: "A bold, long-lasting oil with smoky amber and a leather finish.",
-    price: 52000, old: null, rating: 4.9, reviews: 184, badge: null,
-    img: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=700&auto=format&fit=crop",
-  },
-  {
-    id: "fleur-de-lys", name: "Fleur de Lys", type: "Body Mist · Women",
-    cat: "Women", notes: "Lily · peony · white musk",
-    desc: "A fresh daily mist — light florals that layer beautifully.",
-    price: 18500, old: 22000, rating: 4.7, reviews: 623, badge: "Sale",
-    img: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?q=80&w=700&auto=format&fit=crop",
-  },
-  {
-    id: "santal-whisper", name: "Santal Whisper", type: "Eau de Parfum · Unisex",
-    cat: "Unisex", notes: "Sandalwood · iris · cardamom",
-    desc: "Creamy sandalwood softened with iris — quiet, confident luxury.",
-    price: 42000, old: null, rating: 4.8, reviews: 149, badge: null,
-    img: "https://images.unsplash.com/photo-1590736969955-71cc94901144?q=80&w=700&auto=format&fit=crop",
-  },
-  {
-    id: "citrus-royale", name: "Citrus Royale", type: "Eau de Parfum · Men",
-    cat: "Men", notes: "Bergamot · neroli · vetiver",
-    desc: "A crisp, tailored citrus built for long Nigerian days.",
-    price: 28500, old: null, rating: 4.7, reviews: 342, badge: null,
-    img: "https://images.unsplash.com/photo-1619994403073-2ceb844b8e63?q=80&w=700&auto=format&fit=crop",
-  },
+  { id: "24k", name: "24K", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/24k.jpg.jpg", searchText: ["24k", "fragrance", "collection"] },
+  { id: "alldayfresh", name: "All Day Fresh", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/alldayfresh.jpg.jpg", searchText: ["all day fresh", "fragrance", "collection"] },
+  { id: "aventos", name: "Aventos", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/aventos.jpg.jpg", searchText: ["aventos", "fragrance", "collection"] },
+  { id: "candycrush", name: "Candy Crush", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/candycrush.jpg.jpg", searchText: ["candy crush", "fragrance", "collection"] },
+  { id: "challenge", name: "Challenge", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/challenge.jpg.jpg", searchText: ["challenge", "fragrance", "collection"] },
+  { id: "dove", name: "Dove", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/dove.jpg.jpg", searchText: ["dove", "fragrance", "collection"] },
+  { id: "fruitcherry", name: "Fruit Cherry", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 1200, manualPrice: "₦1,200", badge: null, img: "assets/images/fruitcherry.jpg.jpg", searchText: ["fruit cherry", "fragrance", "collection"] },
+  { id: "genie", name: "Genie", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/genie.jpg.jpg", searchText: ["genie", "fragrance", "collection"] },
+  { id: "imperioway", name: "Imperio Way", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/imperioway.jpg.jpg", searchText: ["imperio way", "fragrance", "collection"] },
+  { id: "kaly", name: "Kaly", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/kaly.jpg.jpg", searchText: ["kaly", "fragrance", "collection"] },
+  { id: "karis", name: "Karis", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/karis.jpg.jpg", searchText: ["karis", "fragrance", "collection"] },
+  { id: "mask", name: "Mask", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 400, manualPrice: "₦400 per one", badge: null, img: "assets/images/mask.jpg.jpg", searchText: ["mask", "fragrance", "collection"] },
+  { id: "mosuf", name: "Mosuf", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/mosuf.jpg.jpg", searchText: ["mosuf", "fragrance", "collection"] },
+  { id: "mosufwardi", name: "Mosuf Ward I", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/mosufwardI.jpg.jpg", searchText: ["mosuf ward i", "fragrance", "collection"] },
+  { id: "mousufward1", name: "Mousuf Ward 1", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/mousufward1.jpg.jpg", searchText: ["mousuf ward 1", "fragrance", "collection"] },
+  { id: "natador", name: "Natador", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/natador.jpg.jpg", searchText: ["natador", "fragrance", "collection"] },
+  { id: "nivea", name: "Nivea", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/nivea.jpg.jpg", searchText: ["nivea", "fragrance", "collection"] },
+  { id: "pinklove", name: "Pink Love", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/pinklove.jpg.jpg", searchText: ["pink love", "fragrance", "collection"] },
+  { id: "storm", name: "Storm", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/storm.jpg.jpg", searchText: ["storm", "fragrance", "collection"] },
+  { id: "stormkids", name: "Storm Kids", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/stormkids.jpg.jpg", searchText: ["storm kids", "fragrance", "collection"] },
+  { id: "super", name: "Super", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/super.jpg.jpg", searchText: ["super", "fragrance", "collection"] },
+  { id: "touch", name: "Touch", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/touch.jpg.jpg", searchText: ["touch", "fragrance", "collection"] },
+  { id: "vannila", name: "Vannila", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/vannila.jpg.jpg", searchText: ["vannila", "fragrance", "collection"] },
+  { id: "vintageradio", name: "Vintage Radio", type: "Fragrance Collection", cat: "Collection", notes: "Fragrance collection", desc: "Real product image from the collection.", price: 0, manualPrice: null, badge: null, img: "assets/images/vintageradio.jpg.jpg", searchText: ["vintage radio", "fragrance", "collection"] }
 ];
 
-const SIGNATURE_IDS = ["velvet-rose", "oud-elan", "vanilla-muse", "midnight-bloom"];
+const SIGNATURE_IDS = ["24k", "alldayfresh", "aventos", "candycrush"];
+
+function setupFeaturedCarousel() {
+  const track = document.getElementById("featuredProductsTrack");
+  const prev = document.getElementById("featuredPrev");
+  const next = document.getElementById("featuredNext");
+  if (!track || !prev || !next) return;
+
+  const scrollAmount = () => Math.max(track.clientWidth * 0.75, 260);
+
+  const scrollByDir = (dir) => track.scrollBy({ left: dir * scrollAmount(), behavior: "smooth" });
+  prev.addEventListener("click", () => scrollByDir(-1));
+  next.addEventListener("click", () => scrollByDir(1));
+
+  let isDown = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+
+  const onPointerDown = (event) => {
+    isDown = true;
+    startX = event.clientX;
+    startScrollLeft = track.scrollLeft;
+    track.setPointerCapture(event.pointerId);
+  };
+
+  const onPointerMove = (event) => {
+    if (!isDown) return;
+    const delta = event.clientX - startX;
+    track.scrollLeft = startScrollLeft - delta;
+  };
+
+  const stopDrag = () => {
+    isDown = false;
+  };
+
+  track.addEventListener("pointerdown", onPointerDown);
+  track.addEventListener("pointermove", onPointerMove);
+  track.addEventListener("pointerup", stopDrag);
+  track.addEventListener("pointerleave", stopDrag);
+  track.addEventListener("pointercancel", stopDrag);
+}
 
 /* ---------- helpers ---------- */
 const $ = (s, c = document) => c.querySelector(s);
@@ -96,6 +104,8 @@ function stars(r) {
 }
 function cardHTML(p, showType = false) {
   const wished = wishlist.includes(p.id) ? "active" : "";
+  const priceValue = p.manualPrice || (p.price > 0 ? naira(p.price) : "");
+  const showPrice = Boolean(priceValue);
   return `
   <article class="product reveal visible" data-id="${p.id}">
     <div class="product-media">
@@ -107,23 +117,27 @@ function cardHTML(p, showType = false) {
     <div class="product-body">
       <p class="product-type">${showType ? p.type : p.notes}</p>
       <h3>${p.name}</h3>
-      ${showType
-        ? `<div class="stars">${stars(p.rating)} <span>(${p.reviews})</span></div>`
-        : `<p class="product-desc">${p.desc}</p>`}
-      <div class="price-row">
-        <span class="price">${naira(p.price)}</span>
-        ${p.old ? `<span class="price-old">${naira(p.old)}</span>` : ""}
-      </div>
+      ${showType ? `<div class="stars">Featured item</div>` : `<p class="product-desc">${p.desc}</p>`}
+      ${showPrice ? `<div class="price-row"><span class="price">${priceValue}</span></div>` : ""}
       <button class="add" data-add="${p.id}">Add to Cart</button>
     </div>
   </article>`;
 }
 
 function renderSignature() {
-  $("#signatureGrid").innerHTML = SIGNATURE_IDS.map((id) => cardHTML(byId(id))).join("");
+  $("#signatureGrid").innerHTML = SIGNATURE_IDS.map((id) => {
+    const target = byId(id);
+    return target ? cardHTML(target) : "";
+  }).join("");
 }
+
+function renderFeatured() {
+  const featured = PRODUCTS.slice(0, 8);
+  $("#featuredProductsTrack").innerHTML = featured.map((p) => cardHTML(p, true)).join("");
+}
+
 function renderBest(filter = "all") {
-  const list = PRODUCTS.filter((p) => filter === "all" || p.cat === filter);
+  const list = PRODUCTS.filter((p) => filter === "all" || p.cat === filter || p.cat === "Collection");
   $("#bestGrid").innerHTML = list.map((p) => cardHTML(p, true)).join("");
 }
 
@@ -214,20 +228,20 @@ function closeAll() {
 /* ---------- quick view ---------- */
 function openQuick(id) {
   const p = byId(id);
+  const modalPrice = p.manualPrice || (p.price > 0 ? naira(p.price) : "");
   $("#quickCard").innerHTML = `
     <button class="close-x" id="quickClose" style="position:absolute;top:12px;right:12px;z-index:2" aria-label="Close">✕</button>
     <img src="${p.img}" alt="${p.name}" />
     <div class="modal-info">
       <p class="eyebrow">${p.type}</p>
       <h3>${p.name}</h3>
-      <div class="stars">${stars(p.rating)} <span>· ${p.reviews} reviews</span></div>
       <p style="margin-top:10px;color:var(--muted)">${p.desc}</p>
       <div class="notes">
-        <div><strong>Top notes — </strong>${p.notes}</div>
-        <div><strong>Wear — </strong>10–12 hours · projects beautifully</div>
-        <div><strong>Size — </strong>50ml EDP / 12ml oil available</div>
+        <div><strong>Product — </strong>${p.name}</div>
+        <div><strong>Collection — </strong>${p.cat}</div>
+        <div><strong>Artwork — </strong>Real product image from the store archive</div>
       </div>
-      <p class="price">${naira(p.price)} ${p.old ? `<span class="price-old">${naira(p.old)}</span>` : ""}</p>
+      ${modalPrice ? `<p class="price">${modalPrice}</p>` : ""}
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <button class="btn btn-gold" data-add="${p.id}">Add to Bag</button>
         <button class="btn btn-ghost" data-wish="${p.id}">♥ Save</button>
@@ -242,11 +256,13 @@ function runSearch(q) {
   const box = $("#searchResults");
   q = q.trim().toLowerCase();
   if (!q) { box.innerHTML = ""; return; }
-  const hits = PRODUCTS.filter((p) =>
-    (p.name + " " + p.type + " " + p.notes + " " + p.desc).toLowerCase().includes(q)).slice(0, 6);
+  const hits = PRODUCTS.filter((p) => {
+    const haystack = [p.name, p.type, p.notes, p.desc, ...(p.searchText || [])].join(" ").toLowerCase();
+    return haystack.includes(q);
+  }).slice(0, 6);
   box.innerHTML = hits.length
-    ? hits.map((p) => `<a href="#shop" data-hit="${p.id}"><span><strong>${p.name}</strong> · ${p.type}</span><span>${naira(p.price)}</span></a>`).join("")
-    : `<p style="color:var(--muted);font-size:.9rem">No matches for “${q}”. Try ‘oud’, ‘rose’ or ‘vanilla’.</p>`;
+    ? hits.map((p) => `<a href="#shop" data-hit="${p.id}"><span><strong>${p.name}</strong> · ${p.type}</span><span>${p.manualPrice || (p.price > 0 ? naira(p.price) : "View")}</span></a>`).join("")
+    : `<p style="color:var(--muted);font-size:.9rem">No matches for “${q}”. Try ‘mask’, ‘fruit cherry’, ‘vanilla’, or ‘touch’.</p>`;
 }
 
 /* ---------- events ---------- */
@@ -294,22 +310,53 @@ $("#wishClose").onclick = closeAll;
 $("#continueBtn").onclick = closeAll;
 $("#wishShopBtn").onclick = () => { closeAll(); document.querySelector("#shop").scrollIntoView({ behavior: "smooth" }); };
 $("#scrim").onclick = closeAll;
-$("#checkoutBtn").onclick = () => {
+async function downloadProductImage(url, filename) {
+  try {
+    const response = await fetch(url, { mode: "cors" });
+    if (!response.ok) return;
+    const blob = await response.blob();
+    const objectUrl = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = objectUrl;
+    link.download = filename;
+    link.rel = "noopener";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+  } catch (error) {
+    console.warn("Image download failed:", error);
+  }
+}
+
+function getCheckoutText(ids) {
+  const lines = ids.map((id) => {
+    const p = byId(id);
+    const productName = p.name || id;
+    const productPrice = p.manualPrice || (p.price > 0 ? naira(p.price) : "Price on request");
+    return `• ${productName} x${cart[id]} — ${productPrice}`;
+  });
+
+  return `Hello ${BRAND.name}! I want to buy these product images:\n\n${lines.join("\n")}\n\nPlease send me the selected image(s) for the above item(s). Thank you!`;
+}
+
+$("#checkoutBtn").onclick = async () => {
   const ids = Object.keys(cart);
   if (!ids.length) {
     toast("Your bag is empty — add a scent first");
     return;
   }
-  const lines = ids.map((id) => {
+
+  toast("Downloading product images and opening WhatsApp…");
+  for (const id of ids) {
     const p = byId(id);
-    return `• ${p.name} (${p.type}) x${cart[id]} — ${naira(p.price * cart[id])}`;
-  });
-  const text =
-    `Hello ${BRAND.name}! I would like to place an order:` +
-    `\n\n${lines.join("\n")}` +
-    `\n\nSubtotal: ${naira(cartSum())}` +
-    `\n\nPlease confirm delivery details. Thank you!`;
-  toast("Opening WhatsApp with your order…");
+    if (p && p.img) {
+      const filename = `${(p.name || id).replace(/\s+/g, " ").trim()}.jpg`;
+      await downloadProductImage(new URL(p.img, window.location.href).href, filename);
+    }
+  }
+
+  const text = getCheckoutText(ids);
   window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
 };
 
@@ -320,7 +367,15 @@ $$("#mobileMenu a").forEach((a) => a.addEventListener("click", closeAll));
 $("#searchBtn").onclick = () => { closeAll(); $("#searchOverlay").classList.add("open"); setTimeout(() => $("#searchInput").focus(), 60); };
 $("#searchClose").onclick = closeAll;
 $("#searchInput").addEventListener("input", (e) => runSearch(e.target.value));
-$$(".search-tags button").forEach((b) => b.onclick = () => { $("#searchInput").value = b.textContent; runSearch(b.textContent); });
+$$(".search-tags button").forEach((b) => b.onclick = () => {
+  if (b.id === "viewAllSearchBtn") {
+    $("#searchInput").value = "";
+    runSearch("");
+    return;
+  }
+  $("#searchInput").value = b.textContent;
+  runSearch(b.textContent);
+});
 $("#quickModal").addEventListener("click", (e) => { if (e.target.id === "quickModal") closeAll(); });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeAll(); });
 
@@ -437,8 +492,16 @@ $$("[data-brand]").forEach((el) => {
 
 /* init */
 renderSignature();
+renderFeatured();
+setupFeaturedCarousel();
 renderBest();
 renderCart();
 renderWish();
 refreshWaPreview();
 $$(".reveal").forEach((el) => io.observe(el));
+
+$("#viewAllProductsBtn").addEventListener("click", () => {
+    $$("#filterPills button").forEach((b) => b.classList.toggle("active", b.dataset.filter === "all"));
+    renderBest("all");
+    document.querySelector("#bestsellers").scrollIntoView({ behavior: "smooth", block: "start" });
+  });

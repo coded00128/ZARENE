@@ -62,7 +62,8 @@
       <input type="text" id="searchInput" placeholder="Try ‘oud’, ‘vanilla’, ‘musk’…" autocomplete="off" />
       <div class="search-results" id="searchResults"></div>
       <div class="search-tags">
-        <button>Velvet Rose</button><button>Oud Élan</button><button>Body Mist</button><button>Perfume Oil</button>
+        <button>Mask</button><button>Fruit Cherry</button><button>Vannila</button><button>Touch</button>
+        <button type="button" id="viewAllSearchBtn">View All Products</button>
       </div>
     </div>
   </div>
@@ -144,6 +145,17 @@
         <p class="eyebrow">Curated for you</p>
         <h2>Signature Collection</h2>
         <p class="sub">Discover the scents everyone will remember.</p>
+      </div>
+      <div class="featured-showcase reveal">
+        <div class="featured-header">
+          <p class="eyebrow">Featured Products</p>
+          <div class="featured-actions">
+            <button class="carousel-btn" id="featuredPrev" type="button" aria-label="Scroll products left">←</button>
+            <button class="carousel-btn" id="featuredNext" type="button" aria-label="Scroll products right">→</button>
+            <button class="btn btn-ghost small" id="viewAllProductsBtn" type="button">View All Products</button>
+          </div>
+        </div>
+        <div class="featured-track" id="featuredProductsTrack" aria-label="Featured product carousel"></div>
       </div>
       <div class="grid products-4" id="signatureGrid"><!-- rendered by JS --></div>
     </div>
