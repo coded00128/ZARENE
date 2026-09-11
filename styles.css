@@ -358,6 +358,14 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.05;letter-spacin
   .hero-ctas .btn{width:100%}
   .quick{display:none}
   .hide-m{display:none}
+  .nav-inner{height:62px;gap:8px}
+  .brand{font-size:1.05rem;letter-spacing:.08em;flex-shrink:0}
+  .nav-actions{gap:4px;flex-shrink:0}
+  .icon-btn{width:36px;height:36px}
+  .icon-btn svg{width:17px;height:17px}
+  .count-badge{min-width:17px;height:17px;font-size:.62rem}
+  .nav-burger{padding:6px;flex-shrink:0}
+  .nav-burger span{width:20px}
   .hero-rule{letter-spacing:.2em;font-size:.68rem;gap:10px}
   .hero-rule span{width:11vw}
   .hero-brand-top{letter-spacing:.05em}
@@ -380,4 +388,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.05;letter-spacin
   .announcement{font-size:.68rem}
   .discovery-btns .btn{width:100%}
   .products-4{gap:10px}
+  .brand{font-size:.92rem;letter-spacing:.06em}
+  .icon-btn{width:33px;height:33px}
+  .nav-inner{gap:6px}
 }
