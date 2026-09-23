@@ -50,30 +50,54 @@ function setupFeaturedCarousel() {
   next.addEventListener("click", () => scrollByDir(1));
 
   let isDown = false;
+  let didDrag = false;
   let startX = 0;
   let startScrollLeft = 0;
 
+  // Suppress the click that follows a real drag (desktop mouse fix).
+  track.addEventListener("click", (event) => {
+    if (didDrag) {
+      event.preventDefault();
+      event.stopPropagation();
+      didDrag = false;
+    }
+  }, true);
+
   const onPointerDown = (event) => {
+    // Only left-mouse / touch / pen drags; ignore right-click etc.
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+    // Don't hijack clicks on interactive children until we know it's a drag.
     isDown = true;
+    didDrag = false;
     startX = event.clientX;
     startScrollLeft = track.scrollLeft;
-    track.setPointerCapture(event.pointerId);
   };
 
   const onPointerMove = (event) => {
     if (!isDown) return;
     const delta = event.clientX - startX;
-    track.scrollLeft = startScrollLeft - delta;
+    if (!didDrag && Math.abs(delta) > 6) {
+      didDrag = true;
+      track.classList.add("dragging");
+      try { track.setPointerCapture(event.pointerId); } catch { /* noop */ }
+    }
+    if (didDrag) {
+      track.scrollLeft = startScrollLeft - delta;
+    }
   };
 
-  const stopDrag = () => {
+  const stopDrag = (event) => {
+    if (!isDown) return;
     isDown = false;
+    track.classList.remove("dragging");
+    try { if (event && event.pointerId !== undefined) track.releasePointerCapture(event.pointerId); } catch { /* noop */ }
+    // Keep didDrag=true briefly so the follow-up click is swallowed.
+    if (didDrag) setTimeout(() => { didDrag = false; }, 50);
   };
 
   track.addEventListener("pointerdown", onPointerDown);
   track.addEventListener("pointermove", onPointerMove);
   track.addEventListener("pointerup", stopDrag);
-  track.addEventListener("pointerleave", stopDrag);
   track.addEventListener("pointercancel", stopDrag);
 }
 
@@ -109,7 +133,7 @@ function cardHTML(p, showType = false) {
   return `
   <article class="product reveal visible" data-id="${p.id}">
     <div class="product-media">
-      <img src="${p.img}" alt="${p.name} — ${p.type}" loading="lazy" />
+      <img src="${p.img}" alt="${p.name} — ${p.type}" loading="lazy" draggable="false" />
       ${p.badge ? `<span class="badge ${p.badge === "Sale" ? "sale" : ""}">${p.badge}</span>` : ""}
       <button class="wish ${wished}" data-wish="${p.id}" aria-label="Add ${p.name} to wishlist">♥</button>
       <button class="quick" data-quick="${p.id}">Quick view</button>
@@ -137,8 +161,9 @@ function renderFeatured() {
 }
 
 function renderBest(filter = "all") {
-  const list = PRODUCTS.filter((p) => filter === "all" || p.cat === filter || p.cat === "Collection");
-  $("#bestGrid").innerHTML = list.map((p) => cardHTML(p, true)).join("");
+  const list = PRODUCTS.filter((p) => filter === "all" || p.cat === filter);
+  const finalList = list.length ? list : PRODUCTS;
+  $("#bestGrid").innerHTML = finalList.map((p) => cardHTML(p, true)).join("");
 }
 
 /* ---------- cart ---------- */
@@ -228,6 +253,8 @@ function closeAll() {
 /* ---------- quick view ---------- */
 function openQuick(id) {
   const p = byId(id);
+  if (!p) return;
+  closeAll();
   const modalPrice = p.manualPrice || (p.price > 0 ? naira(p.price) : "");
   $("#quickCard").innerHTML = `
     <button class="close-x" id="quickClose" style="position:absolute;top:12px;right:12px;z-index:2" aria-label="Close">✕</button>
@@ -248,7 +275,9 @@ function openQuick(id) {
       </div>
     </div>`;
   $("#quickModal").classList.add("open");
-  $("#quickClose").onclick = () => $("#quickModal").classList.remove("open");
+  $("#scrim").classList.add("show");
+  document.body.style.overflow = "hidden";
+  $("#quickClose").onclick = closeAll;
 }
 
 /* ---------- search ---------- */
@@ -283,7 +312,7 @@ document.addEventListener("click", (e) => {
   const qv = e.target.closest("[data-quick]");
   if (qv) { openQuick(qv.dataset.quick); return; }
   const hit = e.target.closest("[data-hit]");
-  if (hit) { closeAll(); openQuick(hit.dataset.hit); return; }
+  if (hit) { e.preventDefault(); closeAll(); openQuick(hit.dataset.hit); return; }
   const inc = e.target.closest("[data-inc]");
   if (inc) { cart[inc.dataset.inc]++; save("zaren_cart", cart); renderCart(); return; }
   const dec = e.target.closest("[data-dec]");
@@ -347,6 +376,11 @@ $("#checkoutBtn").onclick = async () => {
     return;
   }
 
+  // Open WhatsApp synchronously to keep the user gesture (avoids desktop popup blockers).
+  const text = getCheckoutText(ids);
+  const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+  const win = window.open(url, "_blank", "noopener");
+
   toast("Downloading product images and opening WhatsApp…");
   for (const id of ids) {
     const p = byId(id);
@@ -356,15 +390,17 @@ $("#checkoutBtn").onclick = async () => {
     }
   }
 
-  const text = getCheckoutText(ids);
-  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, "_blank", "noopener");
+  if (!win) {
+    toast("Popup blocked — please allow popups to order via WhatsApp");
+    window.location.href = url;
+  }
 };
 
-$("#menuBtn").onclick = () => { closeAll(); $("#mobileMenu").classList.add("open"); $("#scrim").classList.add("show"); };
+$("#menuBtn").onclick = () => { closeAll(); $("#mobileMenu").classList.add("open"); $("#scrim").classList.add("show"); document.body.style.overflow = "hidden"; };
 $("#menuClose").onclick = closeAll;
 $$("#mobileMenu a").forEach((a) => a.addEventListener("click", closeAll));
 
-$("#searchBtn").onclick = () => { closeAll(); $("#searchOverlay").classList.add("open"); setTimeout(() => $("#searchInput").focus(), 60); };
+$("#searchBtn").onclick = () => { closeAll(); $("#searchOverlay").classList.add("open"); $("#scrim").classList.add("show"); document.body.style.overflow = "hidden"; setTimeout(() => $("#searchInput").focus(), 60); };
 $("#searchClose").onclick = closeAll;
 $("#searchInput").addEventListener("input", (e) => runSearch(e.target.value));
 $$(".search-tags button").forEach((b) => b.onclick = () => {
@@ -386,11 +422,13 @@ $("#filterPills").addEventListener("click", (e) => {
   renderBest(b.dataset.filter);
 });
 
-$$(".cat-card").forEach((c) => c.addEventListener("click", () => {
+$$(".cat-card").forEach((c) => c.addEventListener("click", (e) => {
+  e.preventDefault();
   const map = { Perfumes: "all", "Perfume Oils": "all", "Body Mists": "all", Unisex: "Unisex", Women: "Women", Men: "Men" };
   const f = map[c.dataset.cat] || "all";
   $$("#filterPills button").forEach((b) => b.classList.toggle("active", b.dataset.filter === f));
   renderBest(f);
+  document.querySelector("#bestsellers").scrollIntoView({ behavior: "smooth" });
 }));
 
 $("#newsletterForm").addEventListener("submit", (e) => {
