@@ -447,18 +447,6 @@ async function downloadProductImage(url, filename) {
   }
 }
 
-async function fetchImageFile(url, filename) {
-  try {
-    const response = await fetch(url, { mode: "cors" });
-    if (!response.ok) return null;
-    const blob = await response.blob();
-    return new File([blob], filename, { type: blob.type || "image/jpeg" });
-  } catch (error) {
-    console.warn("Image share fetch failed:", error);
-    return null;
-  }
-}
-
 function getCheckoutText(ids) {
   const lines = ids.map((id) => {
     const p = byId(id) || {};
@@ -479,46 +467,15 @@ if (checkoutBtn) checkoutBtn.onclick = async () => {
     return;
   }
 
-  // wa.me text URLs CANNOT pre-attach images — build text URL now, open later per flow.
+  // Straight to the seller's chat: wa.me/<number> opens that exact contact,
+  // so there is no contact picker and no share sheet. Link opens MUST stay
+  // synchronous (popup-safe). Text links can't carry images, so the product
+  // photos auto-download for one-tap attach with + inside the same chat.
   const text = getCheckoutText(ids);
   const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
-
-  // Best-possible: fetch up to first 10 cart product images (p.img only, skip gallery extras to stay under share limits).
-  const files = [];
-  for (const id of ids.slice(0, 10)) {
-    const p = byId(id);
-    if (!p || !p.img) continue;
-    try {
-      const safeName = `${(p.name || id).replace(/[^a-z0-9]+/gi, "-")}.jpg`;
-      const absoluteUrl = new URL(p.img, window.location.href).href;
-      const file = await fetchImageFile(absoluteUrl, safeName);
-      if (file) files.push(file);
-    } catch {
-      continue;
-    }
-  }
-
-  // Web Share API with files (mobile): share images + text, then open wa.me url as text backup.
-  if (files.length && navigator.canShare && navigator.canShare({ files })) {
-    try {
-      await navigator.share({ files, title: "Zarén Elixir order", text });
-      window.open(url, "_blank", "noopener");
-      toast("Images shared — order text opening in WhatsApp…");
-      return;
-    } catch (error) {
-      if (error && error.name === "AbortError") {
-        window.open(url, "_blank", "noopener");
-        toast("Share cancelled — WhatsApp opened, attach images manually if needed");
-        return;
-      }
-      console.warn("Web Share failed, falling back to download:", error);
-    }
-  }
-
-  // Fallback (desktop): open WhatsApp synchronously FIRST (popup-safe), then download images for manual attach via + paperclip button.
   const win = window.open(url, "_blank", "noopener");
 
-  toast("WhatsApp opened — downloading images, attach them with the + paperclip button…");
+  toast("Opening seller's WhatsApp… images downloading, tap + in the chat to attach them");
   for (const id of ids) {
     const p = byId(id);
     if (p && p.img) {
