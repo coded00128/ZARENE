@@ -312,6 +312,12 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.05;letter-spacin
 .modal.open{display:grid}
 .modal-card{background:var(--cream);border-radius:20px;max-width:760px;width:100%;max-height:90vh;overflow:auto;display:grid;grid-template-columns:1fr 1fr;position:relative}
 .modal-card img{width:100%;height:100%;min-height:320px;object-fit:cover}
+.quick-gallery{display:flex;flex-direction:column;min-height:320px}
+.quick-gallery > img{width:100%;flex:1;min-height:260px;object-fit:cover}
+.thumb-row{display:flex;gap:8px;padding:10px}
+.modal-card .thumb-row .thumb{width:54px;height:54px;min-height:0;max-height:none;object-fit:cover;border-radius:10px;border:2px solid transparent;cursor:pointer;opacity:.75}
+.modal-card .thumb-row .thumb.active{border-color:var(--gold);opacity:1}
+.price-note{font-size:.78rem;color:var(--muted);margin-top:4px;font-style:italic}
 .modal-info{padding:32px;overflow:auto}
 .modal-info h3{font-size:2rem}
 .modal-info .price{font-size:1.6rem;margin:10px 0}
@@ -384,7 +390,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.05;letter-spacin
   .features{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .hero-ctas .btn{width:100%}
-  .quick{display:none}
+  .quick{opacity:1;transform:none;font-size:.7rem;padding:9px}
   .hide-m{display:none}
   .nav-inner{height:62px;gap:8px}
   .brand{font-size:1.05rem;letter-spacing:.08em;flex-shrink:0}
@@ -420,3 +426,21 @@ h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.05;letter-spacin
   .icon-btn{width:33px;height:33px}
   .nav-inner{gap:6px}
 }
+
+/* Best-sellers show-more controls (injected by app.js into #bestGrid / #bestMoreWrap) */
+.showing-count{text-align:center;margin-top:14px;grid-column:1/-1;width:100%}
+#bestGrid>div[style*="justify-content:center"]{grid-column:1/-1;width:100%}
+#bestMoreWrap:empty{display:none}
+#bestMoreWrap .btn{min-width:200px}
+@media(max-width:520px){
+  #bestMoreWrap .btn{width:100%}
+  #bestMoreBtn,#bestAllBtn,#bestLessBtn{width:100%}
+}
+
+/* Review initial avatars (replaces stock demo portraits) */
+.avatar-initial{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--navy-900);color:var(--gold-light);font-family:var(--serif);font-size:1.3rem;border:2px solid var(--gold);flex-shrink:0}
+
+/* Mobile touch + carousel fixes */
+.featured-track{scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.featured-actions .carousel-btn{min-width:44px;min-height:44px}
+.modal-card{max-height:92vh}

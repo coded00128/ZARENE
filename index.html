@@ -15,7 +15,7 @@
 
   <!-- Announcement -->
   <div class="announcement">
-    <p>Complimentary delivery on orders over ₦50,000 &nbsp;·&nbsp; Osogbo • Ilorin &nbsp;·&nbsp; New: Oud Élan has arrived</p>
+    <p>Complimentary delivery on orders over ₦50,000 · Osogbo • Ilorin · New: Khamrah Waha & Mosuf 100ml have arrived</p>
   </div>
 
   <!-- ============ 1. NAVIGATION ============ -->
@@ -62,7 +62,7 @@
       <input type="text" id="searchInput" placeholder="Try ‘oud’, ‘vanilla’, ‘musk’…" autocomplete="off" />
       <div class="search-results" id="searchResults"></div>
       <div class="search-tags">
-        <button>Mask</button><button>Fruit Cherry</button><button>Vannila</button><button>Touch</button>
+        <button>Mask</button><button>Fruit Cherry</button><button>Vanilla</button><button>Touch</button>
         <button type="button" id="viewAllSearchBtn">View All Products</button>
       </div>
     </div>
@@ -233,9 +233,11 @@
           <button data-filter="Women">Women</button>
           <button data-filter="Men">Men</button>
           <button data-filter="Unisex">Unisex</button>
+          <button data-filter="Kids">Kids</button>
         </div>
       </div>
       <div class="grid products-4" id="bestGrid"><!-- rendered by JS --></div>
+      <div id="bestMoreWrap" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:20px"></div>
     </div>
   </section>
 
@@ -301,24 +303,24 @@
           <div class="stars">★★★★★</div>
           <blockquote>"Absolutely beautiful scent. I received compliments all day — even on my hijab the next morning."</blockquote>
           <figcaption>
-            <img class="avatar" src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=160&auto=format&fit=crop" alt="Portrait of Amara" loading="lazy" />
-            <div><strong>Amara</strong><span>Verified buyer · Velvet Rose</span></div>
+            <span class="avatar avatar-initial" aria-hidden="true">A</span>
+            <div><strong>Amara</strong><span>Verified buyer · Khamrah Waha</span></div>
           </figcaption>
         </figure>
         <figure class="review reveal">
           <div class="stars">★★★★★</div>
-          <blockquote>"The packaging was gorgeous and the fragrance smells even better. Oud Élan is pure luxury."</blockquote>
+          <blockquote>"The packaging was gorgeous and the fragrance smells even better. Mosuf 100ml is pure luxury."</blockquote>
           <figcaption>
-            <img class="avatar" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=160&auto=format&fit=crop" alt="Portrait of Tolu" loading="lazy" />
-            <div><strong>Tolu</strong><span>Verified buyer · Oud Élan</span></div>
+            <span class="avatar avatar-initial" aria-hidden="true">T</span>
+            <div><strong>Tolu</strong><span>Verified buyer · Mosuf 100ml</span></div>
           </figcaption>
         </figure>
         <figure class="review reveal">
           <div class="stars">★★★★★</div>
           <blockquote>"I finally found a scent that feels like me. Definitely ordering again — delivery to Ilorin was fast."</blockquote>
           <figcaption>
-            <img class="avatar" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=160&auto=format&fit=crop" alt="Portrait of Zainab" loading="lazy" />
-            <div><strong>Zainab</strong><span>Verified buyer · Vanilla Muse</span></div>
+            <span class="avatar avatar-initial" aria-hidden="true">Z</span>
+            <div><strong>Zainab</strong><span>Verified buyer · Yara</span></div>
           </figcaption>
         </figure>
       </div>
@@ -366,7 +368,7 @@
           <img class="contact-photo" src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?q=80&w=800&auto=format&fit=crop" alt="Zarén Elixir perfume bottle on a vanity table" loading="lazy" />
           <div class="contact-lines">
             <div><strong>WhatsApp</strong><span>08127680362 — tap send and chat instantly</span></div>
-            <div><strong>Visit</strong><span>Osogbo • Ilorin · Mon–Sat, 9am–7pm WAT</span></div>
+            <div><strong>Visit</strong><span>Osogbo • Tanke, Unilorin (Ilorin) · Mon–Sat, 9am–7pm WAT</span></div>
             <div><strong>Socials</strong><span>@damie352 (IG) · opeyemidami7277</span></div>
           </div>
         </div>
@@ -383,10 +385,13 @@
             <label>I'm interested in
               <select id="waTopic">
                 <option>General enquiry</option>
-                <option>Velvet Rose — ₦38,500</option>
-                <option>Oud Élan — ₦55,000</option>
-                <option>Vanilla Muse — ₦32,000</option>
-                <option>Midnight Bloom — ₦47,000</option>
+                <option>Khamrah Waha — ₦7,000</option>
+                <option>Mosuf 100ml — ₦18,000</option>
+                <option>Mosuf 25ml — ₦3,000</option>
+                <option>Club de Nuit Intense Man — ₦6,000</option>
+                <option>9pm Night Out</option>
+                <option>Yara (Lattafa-style)</option>
+                <option>Eclaire</option>
                 <option>Perfume oils</option>
                 <option>Body mists</option>
                 <option>Bulk / gifting order</option>
@@ -394,7 +399,7 @@
               </select>
             </label>
             <label>Message
-              <textarea id="waMessage" rows="4" placeholder="Hello! I'd like to order Velvet Rose to Osogbo…"></textarea>
+              <textarea id="waMessage" rows="4" placeholder="Hello! I'd like to order Khamrah Waha to Osogbo…"></textarea>
             </label>
             <p class="preview-label">WhatsApp preview — this exact text will be sent:</p>
             <div class="wa-preview" id="waPreview" aria-live="polite"></div>
@@ -420,13 +425,13 @@
         </div>
         <div class="store-card">
           <div class="map-wrap">
-            <iframe title="Map — Zarén Elixir Ilorin store" src="https://maps.google.com/maps?q=Ilorin,%20Kwara%20State,%20Nigeria&t=&z=13&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+            <iframe title="Map — Zarén Elixir Ilorin (Tanke, Unilorin) store" src="https://maps.google.com/maps?q=Tanke,%20Ilorin,%20Kwara%20State,%20Nigeria&t=&z=14&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
           </div>
           <div class="store-info">
-            <h3>Ilorin Boutique</h3>
-            <p>Ilorin, Kwara State, Nigeria</p>
+            <h3>Ilorin Boutique — Tanke, Unilorin</h3>
+            <p>Tanke, Unilorin, Ilorin, Kwara State, Nigeria</p>
             <p class="store-hours">Mon–Sat · 9am–7pm WAT</p>
-            <a class="store-link" href="https://www.google.com/maps/dir/?api=1&destination=Ilorin+Kwara+State+Nigeria" target="_blank" rel="noopener">Get Directions →</a>
+            <a class="store-link" href="https://www.google.com/maps/dir/?api=1&destination=Tanke+Unilorin+Ilorin+Kwara+State+Nigeria" target="_blank" rel="noopener">Get Directions →</a>
           </div>
         </div>
       </div>
@@ -444,9 +449,7 @@
           <p>Osogbo · Ilorin luxury fragrance house crafting perfumes, perfume oils and body mists that leave a trace — not just a scent.</p>
           <p class="f-contact">08127680362<br />Mon–Sat, 9am–7pm WAT</p>
           <div class="socials">
-            <a href="#" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg></a>
-            <a href="#" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.4 2.3 1.9 3.7 4.2 3.9v3c-1.6 0-3-.5-4.2-1.4v6.3a6.1 6.1 0 1 1-6.1-6.1c.3 0 .7 0 1 .1v3.2a2.9 2.9 0 1 0 2 2.8V3h3.1z"/></svg></a>
-            <a href="#" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14 8h2.5V4.5H14A4.5 4.5 0 0 0 9.5 9v2.5H7V15h2.5v6H13v-6h2.5l.5-3.5h-3V9a1 1 0 0 1 1-1z"/></svg></a>
+            <a href="https://instagram.com/damie352" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram — @damie352"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg></a>
             <a href="https://wa.me/2348127680362" aria-label="WhatsApp" title="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"/><path d="M9 9.5c.5 2.5 3 5 5.5 5.5l1-1.5 2 1c-.5 1.8-1.5 2.2-3 1.7-3-1-6-4-7-7-.5-1.5-.1-2.5 1.7-3l1 2L9 9.5z"/></svg></a>
           </div>
         </div>
@@ -519,6 +522,7 @@
     <span>Chat with us</span>
   </a>
 
+  <script src="products.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
