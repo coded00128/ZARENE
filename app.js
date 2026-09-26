@@ -484,6 +484,12 @@ if (checkoutBtn) checkoutBtn.onclick = async () => {
     }
   }
 
+  // Order is done — clear the bag so a fresh order starts empty.
+  cart = {};
+  save("zaren_cart", cart);
+  renderCart();
+  toast("Order sent — your bag is cleared, thank you!");
+
   if (!win) {
     toast("Popup blocked — please allow popups to order via WhatsApp");
     window.location.href = url;
