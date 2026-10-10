@@ -11,9 +11,11 @@ const BRAND = {
 const WA_NUMBER = "2348127680362"; // 08127680362 in international format — single definition at top.
 
 const PRODUCTS = (window.PRODUCTS && window.PRODUCTS.length ? window.PRODUCTS : []);
-const VISIBLE = PRODUCTS.filter((p) => !p.hidden);
+/* New Oct 2026 drop (ids starting with "new-") pins to the top of every listing. */
+const VISIBLE = PRODUCTS.filter((p) => !p.hidden)
+  .sort((a, b) => ((b.id || "").startsWith("new-") ? 1 : 0) - ((a.id || "").startsWith("new-") ? 1 : 0));
 
-const SIGNATURE_IDS = ["wa-khamrah-waha", "wa-khamra", "wa-mosuf100", "wa-clubenuit"];
+const SIGNATURE_IDS = ["new-khair-confection", "new-anwan", "new-club-de-nuit-intense", "new-oriental-palace"];
 
 function setupFeaturedCarousel() {
   const track = document.getElementById("featuredProductsTrack");
@@ -99,6 +101,7 @@ if (PRODUCTS.length) {
     p.tags = p.tags || [];
     p.gallery = p.gallery && p.gallery.length ? p.gallery : [p.img];
     p.notes = p.notes || p.type || p.cat || "Fragrance";
+    if ((p.id || "").startsWith("new-") && !p.badge) p.badge = "New";
     p.searchText = [...new Set([...(p.searchText || []), p.name, p.brand, p.type, p.size, p.cat, ...p.tags]
       .filter(Boolean).map((s) => String(s).toLowerCase()))];
   }
@@ -166,6 +169,36 @@ function renderFeatured() {
 let bestFilter = "all";
 let bestShown = 24;
 const BEST_STEP = 24;
+let bestQuery = "";
+
+/* Smart category + text filtering shared by pills, collection cards and search. */
+const KNOWN_CATS = ["Women", "Men", "Unisex", "Kids", "Skincare"];
+function normCat(c) {
+  const t = String(c || "").trim().toLowerCase();
+  if (!t || t === "all" || t === "view all" || t === "all fragrances") return "all";
+  if (["men", "man", "mens", "male", "gentlemen", "gentleman", "him", "for him", "masculine"].includes(t)) return "Men";
+  if (["women", "woman", "womens", "female", "ladies", "lady", "her", "for her", "feminine"].includes(t)) return "Women";
+  if (["kid", "kids", "child", "children", "baby", "teen", "teenager", "little ones"].includes(t)) return "Kids";
+  if (t === "unisex") return "Unisex";
+  if (["skincare", "skin", "skin care", "mask", "masks", "care"].includes(t)) return "Skincare";
+  const hit = KNOWN_CATS.find((k) => k.toLowerCase() === t);
+  return hit || "all";
+}
+function productHaystack(p) {
+  return [p.name, p.brand, p.type, p.notes, p.size, p.cat, p.desc, ...(p.searchText || []), ...(p.tags || [])]
+    .filter(Boolean).join(" ").toLowerCase();
+}
+function matchesQuery(p, q) {
+  const tokens = String(q || "").trim().toLowerCase().split(/\s+/).filter(Boolean);
+  if (!tokens.length) return true;
+  const hay = productHaystack(p);
+  return tokens.every((tok) => hay.includes(tok));
+}
+function scrollToBest() {
+  const bs = document.querySelector("#bestsellers");
+  if (bs) bs.scrollIntoView({ behavior: "smooth", block: "start" });
+  else location.hash = "#bestsellers";
+}
 
 function renderBest(filter, append = false) {
   if (typeof filter === "string" && filter) {
@@ -179,12 +212,30 @@ function renderBest(filter, append = false) {
     grid.innerHTML = `<div class="empty"><p>Catalogue loading — please check back shortly.</p></div>`;
     return;
   }
-  const list = VISIBLE.filter((p) => bestFilter === "all" || p.cat === bestFilter);
-  const finalList = list.length ? list : VISIBLE;
+  const list = VISIBLE.filter((p) =>
+    (bestFilter === "all" || normCat(p.cat) === bestFilter) && matchesQuery(p, bestQuery));
+  const finalList = list;
+  if (!finalList.length) {
+    const label = bestQuery ? `No matches for “${bestQuery}”` : `Nothing in “${bestFilter}” yet`;
+    grid.innerHTML = `<div class="empty"><p style="font-family:var(--serif);font-size:1.3rem;color:var(--navy-900)">${label}.</p><p>Try another word or category.</p><div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px"><button class="btn btn-ghost" id="bestClearBtn">Clear filters</button></div></div>`;
+    const clearBtn = document.getElementById("bestClearBtn");
+    if (clearBtn) clearBtn.onclick = () => {
+      bestQuery = ""; bestFilter = "all"; bestShown = BEST_STEP;
+      $$("#filterPills button").forEach((x) => x.classList.toggle("active", x.dataset.filter === "all"));
+      renderBest();
+    };
+    return;
+  }
   if (bestShown > finalList.length) bestShown = finalList.length;
   if (bestShown < BEST_STEP && finalList.length >= BEST_STEP) bestShown = Math.min(BEST_STEP, finalList.length);
   const shown = finalList.slice(0, bestShown);
-  const count = `<p class="showing-count" style="color:var(--muted);font-size:.9rem;text-align:center;margin-top:14px">Showing ${shown.length} of ${finalList.length}</p>`;
+  const activeBits = [];
+  if (bestQuery) activeBits.push(`“${bestQuery}”`);
+  if (bestFilter !== "all") activeBits.push(bestFilter);
+  const scopeNote = activeBits.length ? ` · ${activeBits.join(" · ")}` : "";
+  const clearInlineHTML = (bestQuery || bestFilter !== "all")
+    ? ` <button class="btn btn-ghost small" id="bestClearInline" type="button" style="margin-left:8px">Clear</button>` : "";
+  const count = `<p class="showing-count" style="color:var(--muted);font-size:.9rem;text-align:center;margin-top:14px">Showing ${shown.length} of ${finalList.length}${scopeNote}${clearInlineHTML}</p>`;
   let controls = "";
   if (bestShown < finalList.length) {
     const remaining = finalList.length - bestShown;
@@ -198,6 +249,12 @@ function renderBest(filter, append = false) {
       `</div>`;
   }
   grid.innerHTML = shown.map((p) => cardHTML(p, true)).join("") + count + controls;
+  const clearInlineBtn = document.getElementById("bestClearInline");
+  if (clearInlineBtn) clearInlineBtn.onclick = () => {
+    bestQuery = ""; bestFilter = "all"; bestShown = BEST_STEP;
+    $$("#filterPills button").forEach((x) => x.classList.toggle("active", x.dataset.filter === "all"));
+    renderBest();
+  };
   const moreBtn = document.getElementById("bestMoreBtn");
   if (moreBtn) moreBtn.onclick = () => {
     bestShown = Math.min(bestShown + BEST_STEP, finalList.length);
@@ -405,12 +462,11 @@ document.addEventListener("click", (e) => {
   if (rem) { delete cart[rem.dataset.remove]; save("zaren_cart", cart); renderCart(); return; }
   const gf = e.target.closest("[data-goto-filter]");
   if (gf) {
-    const f = gf.dataset.gotoFilter;
-    $$("#filterPills button").forEach((b) => b.classList.toggle("active", b.dataset.filter === f));
-    bestFilter = f; bestShown = BEST_STEP;
+    const f = normCat(gf.dataset.gotoFilter);
+    $$("#filterPills button").forEach((b) => b.classList.toggle("active", normCat(b.dataset.filter) === f));
+    bestFilter = f; bestQuery = ""; bestShown = BEST_STEP;
     renderBest(bestFilter);
-    const bs = document.querySelector("#bestsellers");
-    if (bs) bs.scrollIntoView({ behavior: "smooth" });
+    scrollToBest();
   }
 });
 
@@ -512,13 +568,31 @@ $$(".search-tags button").forEach((b) => { if (b) b.onclick = () => {
   const si = $("#searchInput");
   if (!si) return;
   if (b.id === "viewAllSearchBtn") {
-    si.value = "";
-    runSearch("");
+    /* View All: apply the typed query (if any) to the grid, close the
+       overlay and scroll down to the products — never stay stuck. */
+    bestQuery = si.value.trim();
+    bestFilter = "all"; bestShown = BEST_STEP;
+    $$("#filterPills button").forEach((x) => x.classList.toggle("active", x.dataset.filter === "all"));
+    renderBest();
+    closeAll();
+    scrollToBest();
     return;
   }
   si.value = b.textContent;
   runSearch(b.textContent);
 }; });
+/* Enter in the search box behaves like View All: filter the grid + scroll down. */
+if (searchInput) searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    bestQuery = searchInput.value.trim();
+    bestFilter = "all"; bestShown = BEST_STEP;
+    $$("#filterPills button").forEach((x) => x.classList.toggle("active", x.dataset.filter === "all"));
+    renderBest();
+    closeAll();
+    scrollToBest();
+  }
+});
 const quickModal = $("#quickModal");
 if (quickModal) quickModal.addEventListener("click", (e) => { if (e.target.id === "quickModal") closeAll(); });
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeAll(); });
@@ -528,19 +602,18 @@ if (filterPills) filterPills.addEventListener("click", (e) => {
   const b = e.target.closest("button"); if (!b) return;
   $$("#filterPills button").forEach((x) => x.classList.remove("active"));
   b.classList.add("active");
-  bestFilter = b.dataset.filter; bestShown = BEST_STEP;
+  bestFilter = normCat(b.dataset.filter); bestQuery = ""; bestShown = BEST_STEP;
   renderBest(bestFilter);
 });
 
 $$(".cat-card").forEach((c) => c.addEventListener("click", (e) => {
   e.preventDefault();
   const map = { Perfumes: "all", "Perfume Oils": "all", "Body Mists": "all", Unisex: "Unisex", Women: "Women", Men: "Men", Kids: "Kids", Skincare: "Skincare" };
-  const f = map[c.dataset.cat] || "all";
-  $$("#filterPills button").forEach((b) => b.classList.toggle("active", b.dataset.filter === f));
-  bestFilter = f; bestShown = BEST_STEP;
+  const f = normCat(map[c.dataset.cat] || c.dataset.cat || "all");
+  $$("#filterPills button").forEach((b) => b.classList.toggle("active", normCat(b.dataset.filter) === f));
+  bestFilter = f; bestQuery = ""; bestShown = BEST_STEP;
   renderBest(bestFilter);
-  const bs = document.querySelector("#bestsellers");
-  if (bs) bs.scrollIntoView({ behavior: "smooth" });
+  scrollToBest();
 }));
 
 const newsletterForm = $("#newsletterForm");
@@ -553,13 +626,29 @@ if (newsletterForm) newsletterForm.addEventListener("submit", (e) => {
     msg.className = "form-msg err";
     return;
   }
+  // Save locally as backup
   const list = load("zaren_newsletter", []);
   list.push({ email: v, at: new Date().toISOString() });
   save("zaren_newsletter", list);
-  msg.textContent = "Welcome to the inner circle — your first scent letter is on its way.";
-  msg.className = "form-msg ok";
-  $("#newsletterEmail").value = "";
-  toast("Subscribed — stay in the scent ✦");
+
+  // Submit to Formspree action endpoint
+  const data = new FormData();
+  data.append("email", v);
+  fetch(newsletterForm.action, {
+    method: newsletterForm.method || "POST",
+    body: data,
+    mode: "no-cors"
+  }).then(() => {
+    msg.textContent = "Welcome to the inner circle — your first scent letter is on its way.";
+    msg.className = "form-msg ok";
+    $("#newsletterEmail").value = "";
+    toast("Subscribed — stay in the scent ✦");
+  }).catch(() => {
+    msg.textContent = "Welcome to the inner circle — your first scent letter is on its way.";
+    msg.className = "form-msg ok";
+    $("#newsletterEmail").value = "";
+    toast("Subscribed — stay in the scent ✦");
+  });
 });
 
 /* ---------- WhatsApp contact form with live preview ---------- */
@@ -655,8 +744,7 @@ $$(".reveal").forEach((el) => io.observe(el));
 const viewAllBtn = $("#viewAllProductsBtn");
 if (viewAllBtn) viewAllBtn.addEventListener("click", () => {
     $$("#filterPills button").forEach((b) => b.classList.toggle("active", b.dataset.filter === "all"));
-    bestFilter = "all"; bestShown = BEST_STEP;
+    bestFilter = "all"; bestQuery = ""; bestShown = BEST_STEP;
     renderBest(bestFilter);
-    const bs = document.querySelector("#bestsellers");
-    if (bs) bs.scrollIntoView({ behavior: "smooth", block: "start" });
+    scrollToBest();
   });

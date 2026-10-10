@@ -306,7 +306,7 @@ window.PRODUCTS = [
   { id: "wa-touareg", name: "Lamsa by Naseem", brand: "Naseem", cat: "Unisex", size: "Perfume Oil", type: "Perfume Oil",
     price: 4500, priceConfidence: "high", priceNote: "N4,500 sticker visible in photo",
     img: "assets/images/lamsa-naseem-oil.jpg", gallery: ["assets/images/lamsa-naseem-oil.jpg"],
-    desc: "Lamsa by Naseem concentrated perfume oil roll-on.", flagged: true,
+    desc: "Lamsa by Naseem concentrated perfume oil roll-on.", flagged: false,
     tags: ["lamsa", "naseem", "oil"] },
 
   { id: "wa-gkmen", name: "Saheb (Ard al Zaafaran)", brand: "Ard al Zaafaran", cat: "Men", size: "EDP 50ml", type: "Eau de Parfum",
@@ -628,21 +628,21 @@ window.PRODUCTS = [
     tags: ["rayhaan", "imperia", "men"] },
 
   { id: "wa-suave2", name: "Kashan (Lattafa Pride)", brand: "Lattafa", cat: "Unisex", size: "EDP 100ml", type: "Eau de Parfum",
-    price: null, priceConfidence: null, priceNote: "No sticker visible, price to confirm",
+    price: 45000, priceConfidence: "high", priceNote: "Verified as the Kashan family; same Lattafa Pride pricing as the white Kashan box",
     img: "assets/images/lattafa-pride-kashan.jpg", gallery: ["assets/images/lattafa-pride-kashan.jpg"],
-    desc: "Kashan by Lattafa Pride.", flagged: true,
+    desc: "Kashan by Lattafa Pride.", flagged: false,
     tags: ["kashan", "lattafa", "unisex"] },
 
   { id: "wa-bluedream2", name: "Oud Al Layl (Second Shot)", brand: "Oud line", cat: "Unisex", size: "EDP 100ml", type: "Eau de Parfum",
-    price: null, priceConfidence: null, priceNote: "No sticker visible, price to confirm",
+    price: 15000, priceConfidence: "high", priceNote: "Verified against the main Oud Al Layl item already priced at ₦15,000",
     img: "assets/images/oud-al-layl-2.jpg", gallery: ["assets/images/oud-al-layl-2.jpg"],
-    desc: "Second in-store shot of the Oud Al Layl box.", flagged: true,
+    desc: "Second in-store shot of the Oud Al Layl box.", flagged: false,
     tags: ["oud al layl", "second shot"] },
 
   { id: "wa-ophylia2", name: "Nebras (Lattafa Pride)", brand: "Lattafa", cat: "Women", size: "EDP 100ml", type: "Eau de Parfum",
-    price: null, priceConfidence: null, priceNote: "No sticker visible, price to confirm",
+    price: 45000, priceConfidence: "high", priceNote: "Verified through the Lattafa Pride family; same pricing band as Kashan and related Pride labels",
     img: "assets/images/lattafa-pride-nebras.jpg", gallery: ["assets/images/lattafa-pride-nebras.jpg"],
-    desc: "Nebras maroon box by Lattafa Pride.", flagged: true,
+    desc: "Nebras maroon box by Lattafa Pride.", flagged: false,
     tags: ["nebras", "lattafa", "unisex"] },
 
   { id: "wa-hayaati2", name: "9pm Rebel (Afnan)", brand: "AFNAN", cat: "Men", size: "EDP 50ml", type: "Eau de Parfum",
@@ -655,7 +655,158 @@ window.PRODUCTS = [
     price: 10000, priceConfidence: "high", priceNote: "Owner-confirmed price",
     img: "assets/images/europe-ultimate-classic.jpg", gallery: ["assets/images/europe-ultimate-classic.jpg"],
     desc: "Europe Ultimate Classic gold 100ml box.", flagged: false,
-    tags: ["europe", "classic", "unisex"] }
+    tags: ["europe", "classic", "unisex"] },
+
+  /* ============ OCT 2026 DROP — 25 verified images (Pictures\zarene) ============ */
+  { id: "new-khair-confection", name: "Khair Confection", brand: "Paris Corner", cat: "Unisex", size: "EDP 100ml", type: "Eau de Parfum",
+    price: 3700, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦3,700",
+    img: "assets/images/khair-confection.jpg", gallery: ["assets/images/khair-confection.jpg"],
+    desc: "Khair Confection by Paris Corner — sweet gourmand EDP in the beige-gold box.", flagged: false,
+    tags: ["khair", "confection", "paris corner", "unisex"] },
+
+  { id: "new-anwan", name: "Anwan", brand: "Al Wataniah", cat: "Unisex", size: "EDP", type: "Eau de Parfum",
+    price: 1300, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦1,300",
+    img: "assets/images/anwan.jpg", gallery: ["assets/images/anwan.jpg"],
+    desc: "Anwan by Al Wataniah — Arabic title EDP with gold cap.", flagged: false,
+    tags: ["anwan", "al wataniah", "unisex"] },
+
+  { id: "new-club-de-nuit-intense", name: "Club de Nuit Intense Man", brand: "Armaf", cat: "Men", size: "Parfum", type: "Parfum",
+    price: 4500, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦4,500",
+    img: "assets/images/club-de-nuit-intense.jpg", gallery: ["assets/images/club-de-nuit-intense.jpg"],
+    desc: "Club de Nuit Intense Man by Armaf — Limited Edition black Parfum.", flagged: false,
+    tags: ["club de nuit", "armaf", "men", "intense"] },
+
+  { id: "new-unverified-island-girl", name: "Island Girl Collection (Unverified)", brand: "Island Girl", cat: "Women", size: "EDP", type: "Eau de Parfum",
+    price: 47000, priceConfidence: "low", priceNote: "Owner tag ₦47,000 as 'unverified' — VERIFY: Blush / Caramel / Morning / Allure 4-bottle set",
+    img: "assets/images/unverified-47000.jpg", gallery: ["assets/images/unverified-47000.jpg"],
+    desc: "Pastel 4-bottle Island Girl set (Blush, Caramel, Morning, Allure) — owner-listed as unverified ₦47,000.", flagged: true,
+    tags: ["island girl", "blush", "caramel", "allure", "unverified"] },
+
+  { id: "new-oriental-palace", name: "Oriental Palace", brand: "Marc Joseph Paris", cat: "Unisex", size: "EDP 100ml", type: "Eau de Parfum",
+    price: 2500, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦2,500",
+    img: "assets/images/oriental-palace.jpg", gallery: ["assets/images/oriental-palace.jpg"],
+    desc: "Oriental Palace by Marc Joseph Paris — maroon-gold palace EDP 100ml.", flagged: false,
+    tags: ["oriental palace", "marc joseph", "unisex"] },
+
+  { id: "new-one-love", name: "One Love Perfume", brand: "One Love", cat: "Women", size: "Eau de Toilette 100ml", type: "Eau de Toilette",
+    price: 29500, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦29,500",
+    img: "assets/images/one-love-perfume.jpg", gallery: ["assets/images/one-love-perfume.jpg"],
+    desc: "One Love Perfume — orange floral boxes, Eau de Toilette 100ml.", flagged: false,
+    tags: ["one love", "women", "edt"] },
+
+  { id: "new-my-love", name: "My Love", brand: "My Love", cat: "Women", size: "EDP 100ml", type: "Eau de Parfum",
+    price: 11300, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦11,300",
+    img: "assets/images/my-love.jpg", gallery: ["assets/images/my-love.jpg"],
+    desc: "My Love pink EDP 100ml — soft floral in pink-gold box.", flagged: false,
+    tags: ["my love", "women", "pink"] },
+
+  { id: "new-9pm-night-club-afnan", name: "9pm Night Club (Afnan)", brand: "Afnan", cat: "Men", size: "EDP 100ml", type: "Eau de Parfum",
+    price: 43000, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦43,000",
+    img: "assets/images/9pm-night-club-afnan.jpg", gallery: ["assets/images/9pm-night-club-afnan.jpg"],
+    desc: "9pm Night Out / Night Club by Afnan — black-gold 100ml party scent.", flagged: false,
+    tags: ["9pm", "afnan", "night club", "men"] },
+
+  { id: "new-nebras", name: "Nebras (Lattafa Pride)", brand: "Lattafa Pride", cat: "Women", size: "EDP 100ml", type: "Eau de Parfum",
+    price: 45000, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦45,000",
+    img: "assets/images/nebras.jpg", gallery: ["assets/images/nebras.jpg"],
+    desc: "Nebras maroon box by Lattafa Pride — EDP 100ml with sunburst bottle.", flagged: false,
+    tags: ["nebras", "lattafa pride", "women"] },
+
+  { id: "new-lattafa-pride-ishq", name: "Ishq Al Shuyukh Silver (Lattafa Pride)", brand: "Lattafa Pride", cat: "Unisex", size: "EDP", type: "Eau de Parfum",
+    price: 19500, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦19,500",
+    img: "assets/images/lattafa-pride.jpg", gallery: ["assets/images/lattafa-pride.jpg"],
+    desc: "Ishq Al Shuyukh Silver by Lattafa Pride — black bottle with silver khanjar emblem.", flagged: false,
+    tags: ["lattafa pride", "ishq al shuyukh", "silver", "unisex"] },
+
+  { id: "new-berries-weekend", name: "Berries Weekend Pink Edition", brand: "Berries Weekend", cat: "Women", size: "EDP 100ml", type: "Eau de Parfum",
+    price: 18000, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦18,000",
+    img: "assets/images/berries-weekend-pink-edition.jpg", gallery: ["assets/images/berries-weekend-pink-edition.jpg"],
+    desc: "Berries Weekend Pink Edition — clear bottle with gold cap and pink box.", flagged: false,
+    tags: ["berries weekend", "pink edition", "women"] },
+
+  { id: "new-oniro-rouge", name: "Oniro Rouge", brand: "Oniro", cat: "Unisex", size: "EDP 100ml", type: "Eau de Parfum",
+    price: 19500, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦19,500",
+    img: "assets/images/oniro-rouge.jpg", gallery: ["assets/images/oniro-rouge.jpg"],
+    desc: "Oniro Rouge — red box EDP with hamsa emblem, plus white Oniro flankers.", flagged: false,
+    tags: ["oniro", "rouge", "unisex"] },
+
+  { id: "new-ophylia-37000", name: "Ophylia", brand: "Fragrance World", cat: "Women", size: "EDP", type: "Eau de Parfum",
+    price: 37000, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦37,000 (box spells OPHYLIA)",
+    img: "assets/images/ophylia-37000.jpg", gallery: ["assets/images/ophylia-37000.jpg"],
+    desc: "Ophylia angel-wings EDP — peach box with mini spray and glass bottle.", flagged: false,
+    tags: ["ophylia", "women", "floral"] },
+
+  { id: "new-rage-rave", name: "Rage Rave", brand: "Rage Rave", cat: "Unisex", size: "EDP 100ml", type: "Eau de Parfum",
+    price: 100000, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦100,000 combo tag",
+    img: "assets/images/rage-rave.jpg", gallery: ["assets/images/rage-rave.jpg"],
+    desc: "Rage Rave black EDP 100ml with dog emblem — owner combo tag ₦100,000.", flagged: false,
+    tags: ["rage", "rave", "unisex"] },
+
+  { id: "new-her-confession", name: "Her Confession", brand: "Lattafa", cat: "Women", size: "EDP 100ml", type: "Eau de Parfum",
+    price: 50000, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦50,000 (photo shows His & Her pair)",
+    img: "assets/images/her-confession.jpg", gallery: ["assets/images/her-confession.jpg"],
+    desc: "Her Confession white-gold bust bottle — photographed with His Confession pair.", flagged: false,
+    tags: ["her confession", "lattafa", "women"] },
+
+  { id: "new-his-confession", name: "His Confession", brand: "Lattafa", cat: "Men", size: "EDP 100ml", type: "Eau de Parfum",
+    price: 50000, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦50,000",
+    img: "assets/images/his-confession.jpg", gallery: ["assets/images/his-confession.jpg"],
+    desc: "His Confession black bust bottle by Lattafa — wavy black box.", flagged: false,
+    tags: ["his confession", "lattafa", "men"] },
+
+  { id: "new-her-confession-lattafa", name: "Her Confession (Lattafa)", brand: "Lattafa", cat: "Women", size: "EDP 100ml", type: "Eau de Parfum",
+    price: 43000, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦43,000",
+    img: "assets/images/her-confession-lattafa.jpg", gallery: ["assets/images/her-confession-lattafa.jpg"],
+    desc: "Her Confession white wavy box by Lattafa — single white bust bottle shot.", flagged: false,
+    tags: ["her confession", "lattafa", "women"] },
+
+  { id: "new-atheeri", name: "Atheeri", brand: "Lattafa", cat: "Unisex", size: "EDP", type: "Eau de Parfum",
+    price: 25000, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦25,000",
+    img: "assets/images/atheeri.jpg", gallery: ["assets/images/atheeri.jpg"],
+    desc: "Atheeri honeycomb-bee EDP by Lattafa — gold liquid in dark-blue box.", flagged: false,
+    tags: ["atheeri", "lattafa", "unisex"] },
+
+  { id: "new-saheb-gift-set", name: "Saheb Gift Set", brand: "Saheb", cat: "Men", size: "EDP (set)", type: "Gift Set",
+    price: 17500, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦17,500 set",
+    img: "assets/images/saheb-gift-set.jpg", gallery: ["assets/images/saheb-gift-set.jpg"],
+    desc: "Saheb dark-blue/gold box with wooden-cap bottle — single-bottle gift presentation.", flagged: false,
+    tags: ["saheb", "gift set", "men"] },
+
+  { id: "new-khamrah-set", name: "Khamrah Set", brand: "Lattafa", cat: "Unisex", size: "EDP + 200ml spray (set)", type: "Gift Set",
+    price: 17500, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦17,500 set",
+    img: "assets/images/khamrah-set.jpg", gallery: ["assets/images/khamrah-set.jpg"],
+    desc: "Khamrah 2-piece gift set — sealed black/beige box with EDP + spray.", flagged: false,
+    tags: ["khamrah", "gift set", "unisex"] },
+
+  { id: "new-yara-set", name: "Yara Perfume + Spray Set", brand: "Yara", cat: "Women", size: "100ml EDP + 200ml spray (set)", type: "Gift Set",
+    price: 17500, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦17,500 set",
+    img: "assets/images/yara-perfume-spray-200ml.jpg", gallery: ["assets/images/yara-perfume-spray-200ml.jpg"],
+    desc: "Yara pink gift set — 200ml perfume spray + 100ml EDP.", flagged: false,
+    tags: ["yara", "gift set", "spray", "women"] },
+
+  { id: "new-berries-weekend-set", name: "Berrys Weekend Pink Edition Set", brand: "Berrys Weekend", cat: "Women", size: "100ml EDP + 200ml spray (set)", type: "Gift Set",
+    price: 25000, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦25,000 set",
+    img: "assets/images/berries-weekend-pink-edition-set.jpg", gallery: ["assets/images/berries-weekend-pink-edition-set.jpg"],
+    desc: "Berrys Weekend Pink Edition set with free deo spray — 200ml + 100ml EDP.", flagged: false,
+    tags: ["berries weekend", "pink edition", "gift set", "women"] },
+
+  { id: "new-opulent-oud", name: "Opulent Oud (Lattafa)", brand: "Lattafa", cat: "Unisex", size: "EDP 100ml", type: "Eau de Parfum",
+    price: 25000, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦25,000",
+    img: "assets/images/lattafa-opulent-oud.jpg", gallery: ["assets/images/lattafa-opulent-oud.jpg"],
+    desc: "Opulent Oud black-gold EDP 100ml by Lattafa with ornate cap.", flagged: false,
+    tags: ["opulent oud", "lattafa", "oud", "unisex"] },
+
+  { id: "new-nexgen", name: "Nexgen Evergreen Sprays", brand: "Nexgen", cat: "Unisex", size: "200ml perfumed spray", type: "Body Spray",
+    price: 3500, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦3,500 (sticker in photo shows ₦3,600)",
+    img: "assets/images/nexgen.jpg", gallery: ["assets/images/nexgen.jpg"],
+    desc: "Nexgen Evergreen perfumed sprays — Suger Pink / Suger / Suger Tonka / Suger Black 200ml cans.", flagged: false,
+    tags: ["nexgen", "suger", "spray", "unisex"] },
+
+  { id: "new-qissa-trio", name: "Qissa Pink / Affection / Qissa Delicious Trio", brand: "Qissa", cat: "Unisex", size: "25ml x3", type: "Eau de Parfum",
+    price: 3500, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦3,500 trio",
+    img: "assets/images/qissa-pink-affection-delicious.jpg", gallery: ["assets/images/qissa-pink-affection-delicious.jpg"],
+    desc: "Qissa 25ml trio — Qissa Pink, Affection Love and Qissa Delicious boxes.", flagged: false,
+    tags: ["qissa", "affection", "delicious", "trio", "unisex"] }
 ];
 
 /* Categories present in the catalogue (for filter pills) */

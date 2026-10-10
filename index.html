@@ -234,6 +234,7 @@
           <button data-filter="Men">Men</button>
           <button data-filter="Unisex">Unisex</button>
           <button data-filter="Kids">Kids</button>
+          <button data-filter="Skincare">Skincare</button>
         </div>
       </div>
       <div class="grid products-4" id="bestGrid"><!-- rendered by JS --></div>
@@ -345,8 +346,8 @@
         <p class="eyebrow gold">Join the inner circle</p>
         <h2>STAY IN THE SCENT</h2>
         <p>Be the first to discover new fragrances, exclusive offers and special collections.</p>
-        <form id="newsletterForm" class="newsletter-form" novalidate>
-          <input type="email" id="newsletterEmail" placeholder="Enter your email address" aria-label="Email address" required />
+        <form id="newsletterForm" class="newsletter-form" novalidate action="https://formspree.io/f/mgaoywqn" method="POST">
+          <input type="email" id="newsletterEmail" name="email" placeholder="Enter your email address" aria-label="Email address" required />
           <button type="submit" class="btn btn-gold">Subscribe</button>
         </form>
         <p class="form-msg" id="newsletterMsg" role="status"></p>
@@ -373,7 +374,7 @@
           </div>
         </div>
         <div class="contact-form-wrap reveal">
-          <form id="waForm" class="wa-form" novalidate>
+          <form id="waForm" class="wa-form" novalidate action="https://formspree.io/f/mgaoywqn" method="POST">
             <div class="field-row">
               <label>Your name
                 <input type="text" id="waName" placeholder="e.g. Aisha Bello" autocomplete="name" />
