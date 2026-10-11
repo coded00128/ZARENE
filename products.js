@@ -785,7 +785,7 @@ window.PRODUCTS = [
     tags: ["yara", "gift set", "spray", "women"] },
 
   { id: "new-berries-weekend-set", name: "Berrys Weekend Pink Edition Set", brand: "Berrys Weekend", cat: "Women", size: "100ml EDP + 200ml spray (set)", type: "Gift Set",
-    price: 25000, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦25,000 set",
+    price: 17500, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦17,500 set corrected (was ₦25,000)",
     img: "assets/images/berries-weekend-pink-edition-set.jpg", gallery: ["assets/images/berries-weekend-pink-edition-set.jpg"],
     desc: "Berrys Weekend Pink Edition set with free deo spray — 200ml + 100ml EDP.", flagged: false,
     tags: ["berries weekend", "pink edition", "gift set", "women"] },
