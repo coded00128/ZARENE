@@ -767,7 +767,7 @@ window.PRODUCTS = [
     tags: ["atheeri", "lattafa", "unisex"] },
 
   { id: "new-saheb-gift-set", name: "Saheb Gift Set", brand: "Saheb", cat: "Men", size: "EDP (set)", type: "Gift Set",
-    price: 17500, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦17,500 set",
+    price: 25000, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦25,000 set corrected (was ₦17,500)",
     img: "assets/images/saheb-gift-set.jpg", gallery: ["assets/images/saheb-gift-set.jpg"],
     desc: "Saheb dark-blue/gold box with wooden-cap bottle — single-bottle gift presentation.", flagged: false,
     tags: ["saheb", "gift set", "men"] },
