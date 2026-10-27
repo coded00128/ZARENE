@@ -11,12 +11,44 @@ const BRAND = {
 const WA_NUMBER = "2348127680362"; // 08127680362 in international format — single definition at top.
 
 const PRODUCTS = (window.PRODUCTS && window.PRODUCTS.length ? window.PRODUCTS : []);
-/* New Oct 2026 drop (ids starting with "new-") pins to the very top of every listing. */
+/* Latest batch added to the catalogue: keep these first in public listings in the exact order reported by the seller. */
+const LATEST_NEW_IDS = [
+  "new-storm-kids",
+  "new-suspenso",
+  "new-supremacy-not-only-intense",
+  "new-supremacy-in-oud",
+  "new-special-oud",
+  "new-ramz",
+  "new-ramz-lattafa",
+  "new-qaed-al-fursan",
+  "new-party-time",
+  "new-oud-roses",
+  "new-oud-al-layl-50ml",
+  "new-o-clock",
+  "new-mirava",
+  "new-marshmallow",
+  "new-lattafa-pride-london",
+  "new-lamsat",
+  "new-khamrah-waha-50ml",
+  "new-dark-aura",
+  "new-dancer-women",
+  "new-dancer-men",
+  "new-breed",
+  "new-black-leather",
+  "new-avanti",
+  "new-temptation",
+  "new-supremacy-collectors-edition",
+];
+const LATEST_NEW_INDEX = Object.fromEntries(LATEST_NEW_IDS.map((id, index) => [id, index]));
 const VISIBLE = PRODUCTS.filter((p) => !p.hidden)
   .sort((a, b) => {
     const aNew = (a.id || "").startsWith("new-") ? 1 : 0;
     const bNew = (b.id || "").startsWith("new-") ? 1 : 0;
     if (bNew !== aNew) return bNew - aNew;
+
+    const aLatestIndex = Object.prototype.hasOwnProperty.call(LATEST_NEW_INDEX, a.id) ? LATEST_NEW_INDEX[a.id] : Number.MAX_SAFE_INTEGER;
+    const bLatestIndex = Object.prototype.hasOwnProperty.call(LATEST_NEW_INDEX, b.id) ? LATEST_NEW_INDEX[b.id] : Number.MAX_SAFE_INTEGER;
+    if (aLatestIndex !== bLatestIndex) return aLatestIndex - bLatestIndex;
     return 0;
   });
 
