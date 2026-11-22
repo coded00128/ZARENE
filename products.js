@@ -652,7 +652,7 @@ window.PRODUCTS = [
     tags: ["9pm", "rebel", "afnan"] },
 
   { id: "wa-premium65", name: "Europe Ultimate Classic", brand: "Europe", cat: "Unisex", size: "EDP 100ml", type: "Eau de Parfum",
-    price: 10000, priceConfidence: "high", priceNote: "Owner-confirmed price",
+    price: 10000, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦25,000",
     img: "assets/images/europe-ultimate-classic.jpg", gallery: ["assets/images/europe-ultimate-classic.jpg"],
     desc: "Europe Ultimate Classic gold 100ml box.", flagged: false,
     tags: ["europe", "classic", "unisex"] },
@@ -716,7 +716,7 @@ window.PRODUCTS = [
     price: 45000, priceConfidence: "high", priceNote: "Verified against WhatsApp chat screenshot — ₦45,000 (was ₦19,500, corrected)",
     img: "assets/images/lattafa-pride.jpg", gallery: ["assets/images/lattafa-pride.jpg"],
     desc: "Ishq Al Shuyukh Silver by Lattafa Pride — black bottle with silver khanjar emblem.", flagged: false,
-    tags: ["lattafa pride", "ishq al shuyukh", "silver", "unisex"] },
+    tags: ["ishq al shuyukh", "lattafa pride", "unisex"] },
 
   { id: "new-berries-weekend", name: "Berries Weekend Pink Edition", brand: "Berries Weekend", cat: "Women", size: "EDP 100ml", type: "Eau de Parfum",
     price: 19500, priceConfidence: "high", priceNote: "Verified against WhatsApp chat screenshot — ₦19,500 (was ₦18,000, corrected)",
@@ -940,23 +940,29 @@ window.PRODUCTS = [
     desc: "Black Leather EDP 100ml.", flagged: false,
     tags: ["black leather", "leather", "unisex"] },
 
+  { id: "new-amjad-coral", name: "Amjad Coral", brand: "Amjad", cat: "Unisex", size: "200ml", type: "Eau de Parfum", price: 82000, priceConfidence: "high", priceNote: "Supplied photo — ₦82,000", img: "assets/images/amjad-coral-200ml.jpg", gallery: ["assets/images/amjad-coral-200ml.jpg"], desc: "Amjad Coral Eau de Parfum 200ml.", flagged: false, tags: ["amjad", "coral", "edp", "unisex"] },
+  { id: "new-axe-spray", name: "Axe Body Spray", brand: "Axe", cat: "Men", size: "Body Spray", type: "Body Spray", price: 3800, priceConfidence: "high", priceNote: "Supplied photo — ₦3,800", img: "assets/images/axe-spray.jpg", gallery: ["assets/images/axe-spray.jpg"], desc: "Axe body spray.", flagged: false, tags: ["axe", "body spray", "men"] },
+  { id: "new-boss-50ml", name: "Boss", brand: "Boss", cat: "Men", size: "50ml", type: "Eau de Parfum", price: 2500, priceConfidence: "high", priceNote: "Supplied photo — ₦2,500", img: "assets/images/boss-50ml.jpg", gallery: ["assets/images/boss-50ml.jpg"], desc: "Boss Eau de Parfum 50ml.", flagged: false, tags: ["boss", "edp", "men"] },
+  { id: "new-bushra-oil", name: "Bushra Perfume Oil", brand: "Bushra", cat: "Unisex", size: "Perfume Oil", type: "Perfume Oil", price: 4500, priceConfidence: "high", priceNote: "Supplied photo — ₦4,500", img: "assets/images/bushra-oil.jpg", gallery: ["assets/images/bushra-oil.jpg"], desc: "Bushra concentrated perfume oil.", flagged: false, tags: ["bushra", "perfume oil", "unisex"] },
+  { id: "new-club-de-nuit-50ml", name: "Club de Nuit", brand: "Club de Nuit", cat: "Unisex", size: "50ml", type: "Eau de Parfum", price: 7500, priceConfidence: "high", priceNote: "Supplied photo — ₦7,500", img: "assets/images/club-de-nuit-50ml.jpg", gallery: ["assets/images/club-de-nuit-50ml.jpg"], desc: "Club de Nuit Eau de Parfum 50ml.", flagged: false, tags: ["club de nuit", "edp", "unisex"] },
+  { id: "new-cosmo-roll-on", name: "Cosmo Roll-On", brand: "Cosmo", cat: "Unisex", size: "Roll-on", type: "Perfume Oil", price: 5300, priceConfidence: "high", priceNote: "Supplied photo — ₦5,300", img: "assets/images/cosmo-roll-on.jpg", gallery: ["assets/images/cosmo-roll-on.jpg"], desc: "Cosmo roll-on deodorant.", flagged: false, tags: ["cosmo", "roll on", "deodorant", "unisex"] },
+  { id: "new-eden-chic", name: "Eden Chic", brand: "Eden", cat: "Women", size: "100ml", type: "Eau de Parfum", price: 43000, priceConfidence: "high", priceNote: "Supplied photo — ₦43,000", img: "assets/images/eden-chic-100ml.jpg", gallery: ["assets/images/eden-chic-100ml.jpg"], desc: "Eden Chic Eau de Parfum 100ml.", flagged: false, tags: ["eden", "chic", "edp", "women"] },
+  { id: "new-hawas", name: "Hawas", brand: "Hawas", cat: "Men", size: "100ml", type: "Eau de Parfum", price: 60000, priceConfidence: "high", priceNote: "Supplied photo — ₦60,000", img: "assets/images/hawas-100ml.jpg", gallery: ["assets/images/hawas-100ml.jpg"], desc: "Hawas Eau de Parfum 100ml.", flagged: false, tags: ["hawas", "edp", "men"] },
+  { id: "new-hayaati", name: "Hayaati", brand: "Hayaati", cat: "Unisex", size: "100ml", type: "Eau de Parfum", price: 21500, priceConfidence: "high", priceNote: "Supplied photo — ₦21,500", img: "assets/images/hayaati-100ml.jpg", gallery: ["assets/images/hayaati-100ml.jpg"], desc: "Hayaati Eau de Parfum 100ml.", flagged: false, tags: ["hayaati", "edp", "unisex"] },
+  { id: "new-jade", name: "Jade", brand: "Jade", cat: "Women", size: "100ml", type: "Eau de Parfum", price: 7000, priceConfidence: "high", priceNote: "Supplied photo — ₦7,000", img: "assets/images/jade-100ml.jpg", gallery: ["assets/images/jade-100ml.jpg"], desc: "Jade Eau de Parfum 100ml.", flagged: false, tags: ["jade", "edp", "women"] },
+  { id: "new-now", name: "Now", brand: "Now", cat: "Unisex", size: "50ml", type: "Eau de Parfum", price: 7000, priceConfidence: "high", priceNote: "Supplied photo — ₦7,000", img: "assets/images/now-50ml.jpg", gallery: ["assets/images/now-50ml.jpg"], desc: "Now Eau de Parfum 50ml.", flagged: false, tags: ["now", "edp", "unisex"] },
+  { id: "new-qasida-sahm", name: "Qasida Sahm", brand: "Qasida", cat: "Unisex", size: "100ml", type: "Eau de Parfum", price: 75000, priceConfidence: "high", priceNote: "Supplied photo — ₦75,000", img: "assets/images/qasida-sahm-100ml.jpg", gallery: ["assets/images/qasida-sahm-100ml.jpg"], desc: "Qasida Sahm Eau de Parfum 100ml.", flagged: false, tags: ["qasida", "sahm", "edp", "unisex"] },
+  { id: "new-sugarmallow-pink", name: "Sugarmallow Pink", brand: "Sugarmallow", cat: "Women", size: "100ml", type: "Eau de Parfum", price: 43000, priceConfidence: "high", priceNote: "Supplied photo — ₦43,000", img: "assets/images/sugarmallow-pink-100ml.jpg", gallery: ["assets/images/sugarmallow-pink-100ml.jpg"], desc: "Sugarmallow Pink Eau de Parfum 100ml.", flagged: false, tags: ["sugarmallow", "pink", "edp", "women"] },
+  { id: "new-veyes", name: "Veyes", brand: "Veyes", cat: "Unisex", size: "50ml", type: "Eau de Parfum", price: 3800, priceConfidence: "high", priceNote: "Supplied photo — ₦3,800", img: "assets/images/veyes-50ml.jpg", gallery: ["assets/images/veyes-50ml.jpg"], desc: "Veyes Eau de Parfum 50ml.", flagged: false, tags: ["veyes", "edp", "unisex"] },
+  { id: "new-victory", name: "Victory", brand: "Victory", cat: "Unisex", size: "100ml", type: "Eau de Parfum", price: 9000, priceConfidence: "high", priceNote: "Supplied photo — ₦9,000", img: "assets/images/victory-100ml.jpg", gallery: ["assets/images/victory-100ml.jpg"], desc: "Victory Eau de Parfum 100ml.", flagged: false, tags: ["victory", "edp", "unisex"] },
+  { id: "new-vintage-radio-set", name: "Vintage Radio Set", brand: "Vintage Collection", cat: "Unisex", size: "Decor Set", type: "Decorative Set", price: 55000, priceConfidence: "high", priceNote: "Supplied photo — ₦55,000", img: "assets/images/vintage-radio-set.jpg", gallery: ["assets/images/vintage-radio-set.jpg"], desc: "A decorative vintage radio set.", flagged: false, tags: ["vintage", "radio", "decor", "set", "unisex"] },
+  { id: "new-youth-commander", name: "Youth Commander", brand: "Youth Commander", cat: "Men", size: "100ml", type: "Eau de Parfum", price: 18500, priceConfidence: "high", priceNote: "Supplied photo — ₦18,500", img: "assets/images/youth-commander-100ml.jpg", gallery: ["assets/images/youth-commander-100ml.jpg"], desc: "Youth Commander Eau de Parfum 100ml.", flagged: false, tags: ["youth commander", "edp", "men"] },
+
   { id: "new-avanti", name: "Avanti", brand: "Avanti", cat: "Unisex", size: "100ml", type: "Eau de Parfum",
-    price: 15500, priceConfidence: "high", priceNote: "Owner price list Oct 2026 — ₦15,500",
-    img: "assets/images/avanti.jpg", gallery: ["assets/images/avanti.jpg"],
-    desc: "Avanti EDP 100ml.", flagged: false,
-    tags: ["avanti", "unisex"] },
-
-  { id: "new-qissa-trio", name: "Qissa Pink / Affection / Qissa Delicious Trio", brand: "Qissa", cat: "Unisex", size: "25ml x3", type: "Eau de Parfum",
-    price: 3500, priceConfidence: "high", priceNote: "Owner price list Oct 2026 â€” â‚¦3,500 trio",
-    img: "assets/images/qissa-pink-affection-delicious.jpg", gallery: ["assets/images/qissa-pink-affection-delicious.jpg"],
-    desc: "Qissa 25ml trio â€” Qissa Pink, Affection Love and Qissa Delicious boxes.", flagged: false,
-    tags: ["qissa", "affection", "delicious", "trio", "unisex"] },
-
-  { id: "new-temptation", name: "Temptation", brand: "Temptation", cat: "Unisex", size: "100ml", type: "Eau de Parfum",
-    price: 5200, priceConfidence: "high", priceNote: "Owner price list Oct 2026 â€” â‚¦5,200",
-    img: "assets/images/temptation.jpg", gallery: ["assets/images/temptation.jpg"],
-    desc: "Temptation EDP 100ml.", flagged: false,
-    tags: ["temptation", "unisex"] },
+    price: 18000, priceConfidence: "high", priceNote: "Supplied photo — ₦18,000",
+    img: "assets/images/avanti-new-100ml.jpg", gallery: ["assets/images/avanti-new-100ml.jpg"],
+    desc: "Avanti Eau de Parfum 100ml.", flagged: false,
+    tags: ["avanti", "edp", "unisex", "100ml"] },
 ];
 
 /* Categories present in the catalogue (for filter pills) */
